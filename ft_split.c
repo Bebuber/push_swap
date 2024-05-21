@@ -6,7 +6,7 @@
 /*   By: bebuber <bebuber@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 20:17:33 by bebuber           #+#    #+#             */
-/*   Updated: 2024/05/20 17:39:47 by bebuber          ###   ########.fr       */
+/*   Updated: 2024/05/21 08:38:23 by bebuber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,26 @@ int	ft_count_rows(const char *s, char c)
 	return (rows);
 }
 
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
+{
+	size_t	i;
+	size_t	s;
+
+	i = 0;
+	s = 0;
+	while (src[i] != 0)
+		i++;
+	if (dest == 0 || size == 0)
+		return (i);
+	while ((s < size - 1) && (src[s] != 0))
+	{
+		dest[s] = src[s];
+		s++;
+	}
+	dest[s] = 0;
+	return (i);
+}
+
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*c1;
@@ -75,26 +95,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (len != 0)
 		ft_strlcpy(c1, s, len + 1);
 	return (c1);
-}
-
-size_t	ft_strlcpy(char *dest, const char *src, size_t size)
-{
-	size_t	i;
-	size_t	s;
-
-	i = 0;
-	s = 0;
-	while (src[i] != 0)
-		i++;
-	if (dest == 0 || size == 0)
-		return (i);
-	while ((s < size - 1) && (src[s] != 0))
-	{
-		dest[s] = src[s];
-		s++;
-	}
-	dest[s] = 0;
-	return (i);
 }
 
 t_list	*ft_split(char const *s, char c)

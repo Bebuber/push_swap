@@ -6,13 +6,13 @@
 /*   By: bebuber <bebuber@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:26:33 by bebuber           #+#    #+#             */
-/*   Updated: 2024/05/18 18:33:45 by bebuber          ###   ########.fr       */
+/*   Updated: 2024/05/21 16:54:15 by bebuber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(t_list **stack)
+void	swap(t_list **stack, char *str)
 {
 	t_list	*new;
 
@@ -22,21 +22,27 @@ void	swap(t_list **stack)
 	(*stack)->next = (*stack)->next->next;
 	new->next = (*stack);
 	*stack = new;
+	if (str)
+		ft_printf("%s\n", str);
 }
 
-void	push(t_list	**stack_a, t_list **stack_b)
+//pushes from the source to the target pt
+void	push(t_list	**source, t_list **target, char *str)
 {
 	t_list	*tmp;
 
-	if (!stack_a || !stack_b || !(*stack_a))
+	if (!source || !target || !(*source))
 		return ;
-	tmp = (*stack_a)->next;
-	(*stack_a)->next = (*stack_b);
-	*stack_b = (*stack_a);
-	*stack_a = tmp;
+	tmp = (*source)->next;
+	(*source)->next = (*target);
+	*target = (*source);
+	*source = tmp;
+	if (str)
+		ft_printf("%s\n", str);
 }
 
-void	rotate(t_list	**stack)
+//first goes last
+void	rotate(t_list	**stack, char *str)
 {
 	t_list	*tmp;
 
@@ -46,9 +52,12 @@ void	rotate(t_list	**stack)
 	*stack = (*stack)->next;
 	tmp->next = NULL;
 	ft_lstadd_back(stack, tmp);
+	if (str)
+		ft_printf("%s\n", str);
 }
 
-void	reverse_rotate(t_list	**stack)
+//last goes first
+void	reverse_rotate(t_list	**stack, char *str)
 {
 	t_list	*tmp;
 	t_list	*prev;
@@ -60,6 +69,8 @@ void	reverse_rotate(t_list	**stack)
 	tmp->next = (*stack);
 	*stack = tmp;
 	prev->next = NULL;
+	if (str)
+		ft_printf("%s\n", str);
 }
 
 //int main(void)
@@ -88,7 +99,7 @@ void	reverse_rotate(t_list	**stack)
 //	temp = stack;
 //	while (temp)
 //	{
-//		printf("%d\n", temp->content);
+//		ft_printf("%d\n", temp->content);
 //		temp = temp->next;
 //	}
 //	//push(&stack, &stack_b);
@@ -96,12 +107,12 @@ void	reverse_rotate(t_list	**stack)
 //	//rotate(&stack);
 //	//reverse_rotate(&stack);
 
-//	printf("---------------\n");
+//	ft_printf("---------------\n");
 
 //	temp = stack;
 //	while (temp)
 //	{
-//		printf("%d\n", temp->content);
+//		ft_printf("%d\n", temp->content);
 //		temp = temp->next;
 //	}
 //	return (0);

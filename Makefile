@@ -6,15 +6,15 @@
 #    By: bebuber <bebuber@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/06 16:43:05 by bebuber           #+#    #+#              #
-#    Updated: 2024/05/20 17:02:04 by bebuber          ###   ########.fr        #
+#    Updated: 2024/05/21 16:47:55 by bebuber          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g
 RM	= rm -rf
-NAME = push_swap.a
-SRC = operations.c lists.c push_swap.c ft_split.c
+NAME = push_swap
+SRC = operations.c lists.c push_swap.c ft_split.c sort_stack.c ft_printf.c
 OBJS = $(SRC:.c=.o)
 #LIBFT = libft.a
 #LIBRARY_DIR = libft

@@ -6,7 +6,7 @@
 /*   By: bebuber <bebuber@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 14:05:33 by bebuber           #+#    #+#             */
-/*   Updated: 2024/05/20 17:46:54 by bebuber          ###   ########.fr       */
+/*   Updated: 2024/05/21 16:53:59 by bebuber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,14 @@ int	main(int argc, char **argv)
 	stack_a = NULL;
 	stack_b = NULL;
 	if (argc < 2)
-		printf("%s\n", argv[0]);
+		ft_printf("%s\n", argv[0]);
 	else if (argc == 2)
 		stack_a = ft_split(argv[1], ' ');
 	else
 		stack_a = create_stack_a((--argc), (++argv));
-	test(&stack_a);
+	check_duplicates(&stack_a);
+	//test(&stack_a, 's');
+	sort_stack(&stack_a, &stack_b);
 	return (0);
 }
 
@@ -76,6 +78,21 @@ long int	ft_atoi(const char *str)
 	return (numb * ngt);
 }
 
+void	free_n_exit(t_list **lst)
+{
+	t_list	*temp;
+
+	ft_printf("Error\n");
+	while (*lst)
+	{
+		temp = (*lst)->next;
+		free (*lst);
+		*lst = temp;
+	}
+	*lst = NULL;
+	exit (1);
+}
+
 t_list	*create_stack_a(int argc, char **argv)
 {
 	t_list		*list;
@@ -100,29 +117,18 @@ t_list	*create_stack_a(int argc, char **argv)
 	return (list);
 }
 
-void	free_n_exit(t_list **lst)
+
+void	test(t_list **list, char c)
 {
-	t_list	*temp;
+	t_list	*tmp;
+	t_list	*copy;
 
-	printf ("Error\n");
-	while (*lst)
+	copy = (*list);
+	while (copy)
 	{
-		temp = (*lst)->next;
-		free (*lst);
-		*lst = temp;
+		tmp = copy;
+		ft_printf("        %d\n", copy->content);
+		copy = tmp->next;
 	}
-	*lst = NULL;
-	exit (1);
+	ft_printf("    |---------|    \n    | stack_%c |     \n    |_________|    \n\n", c);
 }
-
-//void	test(t_list **list)
-//{
-//	t_list	*tmp;
-
-//	while (*list)
-//	{
-//		tmp = (*list);
-//		printf("%d\n", (*list)->content);
-//		*list = tmp->next;
-//	}
-//}

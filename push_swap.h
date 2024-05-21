@@ -6,7 +6,7 @@
 /*   By: bebuber <bebuber@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 18:59:08 by bebuber           #+#    #+#             */
-/*   Updated: 2024/05/20 17:39:28 by bebuber          ###   ########.fr       */
+/*   Updated: 2024/05/21 17:01:36 by bebuber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 # include <stdbool.h>
 # include <limits.h>
 # include <stdlib.h>
-# include <stdio.h>
-# include <limits.h>
-# include "printf/ft_printf.h"
+//# include <stdio.h>
+# include <unistd.h>
+# include <stdarg.h>
 
 typedef struct s_list
 {
@@ -27,11 +27,11 @@ typedef struct s_list
 }	t_list;
 
 //operations.c
-void		swap(t_list **stack);
-void		push(t_list	**stack_a, t_list **stack_b);
-void		rotate(t_list	**stack);
-void		reverse_rotate(t_list	**stack);
-void		*ft_calloc(size_t count, size_t size);
+void		swap(t_list **stack, char *str);
+void		push(t_list	**source, t_list **target, char *str);
+void		rotate(t_list	**stack, char *str);
+void		reverse_rotate(t_list	**stack, char *str);
+//void		*ft_calloc(size_t count, size_t size);
 
 //lists.c
 t_list		*ft_lstnew(int content);
@@ -49,10 +49,21 @@ int			ft_count_rows(const char *s, char c);
 
 //push_swap.c
 int			main(int argc, char **argv);
+void		test(t_list **list, char c);
 void		free_n_exit(t_list **lst);
 t_list		*create_stack_a(int argc, char **argv);
-void		test(t_list **list);
 int			ft_isdigit(const char *str);
 long int	ft_atoi(const char *str);
+
+//sort_stack_a.c
+void		check_duplicates(t_list **list);
+void		sort_stack(t_list **stack_a, t_list **stack_b);
+int			if_sorted(t_list **list);
+void		pour_stack_a(t_list **stack_a, t_list **stack_b);
+void		pour_back_from_stack_b(t_list **stack_a, t_list **stack_b);
+void		first_pour(t_list **stack_a, t_list **stack_b);
+
+//ft_printf.c
+int			ft_printf(const char *c, ...);
 
 #endif
