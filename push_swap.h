@@ -6,7 +6,7 @@
 /*   By: bebuber <bebuber@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 18:59:08 by bebuber           #+#    #+#             */
-/*   Updated: 2024/05/21 17:01:36 by bebuber          ###   ########.fr       */
+/*   Updated: 2024/05/25 15:42:46 by bebuber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,11 @@ long int	ft_atoi(const char *str);
 void		check_duplicates(t_list **list);
 void		sort_stack(t_list **stack_a, t_list **stack_b);
 int			if_sorted(t_list **list);
-void		pour_stack_a(t_list **stack_a, t_list **stack_b);
+//void		pour_stack_a(t_list **stack_a, t_list **stack_b);
 void		pour_back_from_stack_b(t_list **stack_a, t_list **stack_b);
-void		first_pour(t_list **stack_a, t_list **stack_b);
+void		first_pour(t_list **stack_a, t_list **stack_b, int mid);
+int			find_mid(t_list **list);
+void		sort_stack_a(t_list **stack_a);
 
 //ft_printf.c
 int			ft_printf(const char *c, ...);
