@@ -6,7 +6,7 @@
 /*   By: bebuber <bebuber@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:26:33 by bebuber           #+#    #+#             */
-/*   Updated: 2024/05/21 16:54:15 by bebuber          ###   ########.fr       */
+/*   Updated: 2024/05/25 20:03:29 by bebuber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,26 @@ void	reverse_rotate(t_list	**stack, char *str)
 	prev->next = NULL;
 	if (str)
 		ft_printf("%s\n", str);
+}
+
+void	check_duplicates(t_list **list)
+{
+	t_list	*copy;
+	t_list	*node;
+
+	copy = (*list);
+	node = copy;
+	while (node)
+	{
+		copy = node->next;
+		while (copy)
+		{
+			if (node->content == copy->content)
+				free_n_exit(&(*list));
+			copy = copy->next;
+		}
+		node = node->next;
+	}
 }
 
 //int main(void)

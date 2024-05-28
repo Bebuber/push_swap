@@ -6,7 +6,7 @@
 /*   By: bebuber <bebuber@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 20:17:33 by bebuber           #+#    #+#             */
-/*   Updated: 2024/05/21 08:38:23 by bebuber          ###   ########.fr       */
+/*   Updated: 2024/05/28 20:45:48 by bebuber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,18 +100,18 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 t_list	*ft_split(char const *s, char c)
 {
 	char		**arr;
-	int			rows;
+	int			numbers;
 	long int	size;
 	int			n;
 	int			p;
 
 	n = 0;
 	p = 0;
-	rows = ft_count_rows(s, c);
-	arr = (char **)malloc((rows + 1) * sizeof(char *));
+	numbers = ft_count_rows(s, c);
+	arr = (char **)malloc((numbers + 1) * sizeof(char *));
 	if (arr == NULL)
 		return (NULL);
-	while (p < rows)
+	while (p < numbers)
 	{
 		while (s[n] == c)
 			n++;
@@ -121,7 +121,7 @@ t_list	*ft_split(char const *s, char c)
 		p++;
 	}
 	arr[p] = 0;
-	return (create_stack_a(rows, arr));
+	return (create_stack_a(numbers, arr));
 }
 
 //int	main(void)
