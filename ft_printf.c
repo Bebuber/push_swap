@@ -6,7 +6,7 @@
 /*   By: bebuber <bebuber@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 18:34:45 by bebuber           #+#    #+#             */
-/*   Updated: 2024/05/25 20:05:50 by bebuber          ###   ########.fr       */
+/*   Updated: 2024/05/29 18:25:28 by bebuber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,7 @@ int	ft_putstr(char *c, int *count)
 
 	len = 0;
 	if (c == 0)
-	{
-		(*count) += 6;
-		return (write(1, "(null)", 6));
-	}
+		return (0);
 	while (c[len] != 0)
 		len++;
 	(*count) += len;

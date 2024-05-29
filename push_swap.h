@@ -6,7 +6,7 @@
 /*   By: bebuber <bebuber@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 18:59:08 by bebuber           #+#    #+#             */
-/*   Updated: 2024/05/28 21:57:35 by bebuber          ###   ########.fr       */
+/*   Updated: 2024/05/29 18:21:53 by bebuber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void		test(t_list **list, char c);
 void		sort_stack(t_list **stack_a, t_list **stack_b);
 int			if_sorted(t_list **list);
 void		pour_back_from_stack_b(t_list **stack_a, t_list **stack_b);
-void		first_pour(t_list **stack_a, t_list **stack_b, int mid);
+void		first_pour(t_list **stack_a, t_list **stack_b, int mid, int check);
 int			find_mid(t_list **list);
 void		sort_stack_a(t_list **stack_a);
 int			find_min(t_list **list);
