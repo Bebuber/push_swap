@@ -6,7 +6,7 @@
 /*   By: bebuber <bebuber@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 09:05:48 by bebuber           #+#    #+#             */
-/*   Updated: 2024/05/30 19:24:21 by bebuber          ###   ########.fr       */
+/*   Updated: 2024/05/30 20:17:12 by bebuber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,9 @@ void	sort_stack(t_list **stack_a, t_list **stack_b)
 	mid = (find_max(stack_a) + find_min(stack_a)) / 2;
 	premid = (mid + find_min(stack_a)) / 2;
 	postmid = (mid + find_max(stack_a)) / 2;
-	if (if_sorted(stack_a) == 1)
-		exit (1);
-	while (i < ft_lstsize(*stack_a) - 2)
-	{
+	
+	while (ft_lstsize(*stack_b) < ft_lstsize(*stack_a) - 2)
 		first_pour(stack_a, stack_b, mid, premid);
-		i++;
-	}
 	while (ft_lstsize(*stack_b) / 3 + 2 < ft_lstsize(*stack_a) && ft_lstsize(*stack_a) > 3)
 		first_pour(stack_a, stack_b, postmid, find_min(stack_b));
 	while (ft_lstsize(*stack_a) > 3)

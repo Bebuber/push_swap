@@ -6,7 +6,7 @@
 /*   By: bebuber <bebuber@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 14:05:33 by bebuber           #+#    #+#             */
-/*   Updated: 2024/05/30 19:04:25 by bebuber          ###   ########.fr       */
+/*   Updated: 2024/05/30 19:59:40 by bebuber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int	main(int argc, char **argv)
 	if (stack_a == NULL)
 		free_n_exit(&stack_a);
 	check_duplicates(&stack_a);
+	if (if_sorted(&stack_a) == 1)
+		exit (1);
 	sort_stack(&stack_a, &stack_b);
 	return (0);
 }
