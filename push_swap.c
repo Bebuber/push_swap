@@ -6,7 +6,7 @@
 /*   By: bebuber <bebuber@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 14:05:33 by bebuber           #+#    #+#             */
-/*   Updated: 2024/05/21 16:53:59 by bebuber          ###   ########.fr       */
+/*   Updated: 2024/05/30 19:04:25 by bebuber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,16 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		ft_printf("%s\n", argv[0]);
 	else if (argc == 2)
+	{
+		if (!argv[1][0])
+			free_n_exit(&stack_a);
 		stack_a = ft_split(argv[1], ' ');
+	}
 	else
 		stack_a = create_stack_a((--argc), (++argv));
+	if (stack_a == NULL)
+		free_n_exit(&stack_a);
 	check_duplicates(&stack_a);
-	//test(&stack_a, 's');
 	sort_stack(&stack_a, &stack_b);
 	return (0);
 }
@@ -82,7 +87,7 @@ void	free_n_exit(t_list **lst)
 {
 	t_list	*temp;
 
-	ft_printf("Error\n");
+	write(2, "Error\n", 6);
 	while (*lst)
 	{
 		temp = (*lst)->next;
@@ -117,18 +122,18 @@ t_list	*create_stack_a(int argc, char **argv)
 	return (list);
 }
 
+//void	test(t_list **list, char c)
+//{
+//	t_list	*tmp;
+//	t_list	*copy;
 
-void	test(t_list **list, char c)
-{
-	t_list	*tmp;
-	t_list	*copy;
-
-	copy = (*list);
-	while (copy)
-	{
-		tmp = copy;
-		ft_printf("        %d\n", copy->content);
-		copy = tmp->next;
-	}
-	ft_printf("    |---------|    \n    | stack_%c |     \n    |_________|    \n\n", c);
-}
+//	copy = (*list);
+//	while (copy)
+//	{
+//		tmp = copy;
+//		ft_printf("        %d\n", copy->content);
+//		copy = tmp->next;
+//	}
+//	ft_printf("    |---------|    \n    /
+//| stack_%c |     \n    |_________|    \n\n", c);
+//}

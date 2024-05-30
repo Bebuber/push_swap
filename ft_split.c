@@ -6,7 +6,7 @@
 /*   By: bebuber <bebuber@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 20:17:33 by bebuber           #+#    #+#             */
-/*   Updated: 2024/05/28 20:45:48 by bebuber          ###   ########.fr       */
+/*   Updated: 2024/05/30 18:40:55 by bebuber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	ft_count_rows(const char *s, char c)
 			rows++;
 			n++;
 		}
-		else if (s[n] == c && s[n + 1] != c && s[n + 1] != '\0')
+		else if (s[n] == c && s[n + 1] && s[n + 1] != c)
 		{
 			rows++;
 			n++;

@@ -6,12 +6,11 @@
 /*   By: bebuber <bebuber@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 18:34:45 by bebuber           #+#    #+#             */
-/*   Updated: 2024/05/29 18:25:28 by bebuber          ###   ########.fr       */
+/*   Updated: 2024/05/30 19:03:01 by bebuber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 int	ft_putchar(char c, int *count)
 {
@@ -69,16 +68,6 @@ int	conversion_check(const char *c, va_list args, int *count)
 		return (ft_putnbr(va_arg(args, unsigned int), count));
 	else if (*c == '%')
 		return (ft_putchar('%', count));
-	//else if (*c == 'X')
-	//	return (ft_hexa(va_arg(args, unsigned int), 1, count));
-	//else if (*c == 'x')
-	//	return (ft_hexa(va_arg(args, unsigned int), 0, count));
-	//else if (*c == 'p')
-	//{
-	//	if (ft_putstr("0x", count) < 0)
-	//		return (-1);
-	//	return (ft_hexa(va_arg(args, unsigned long), 0, count));
-	//}
 	else
 		return (ft_putchar(*c, count));
 }

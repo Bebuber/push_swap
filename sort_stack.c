@@ -6,7 +6,7 @@
 /*   By: bebuber <bebuber@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 09:05:48 by bebuber           #+#    #+#             */
-/*   Updated: 2024/05/29 19:53:12 by bebuber          ###   ########.fr       */
+/*   Updated: 2024/05/30 19:24:21 by bebuber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,21 @@ void	sort_stack(t_list **stack_a, t_list **stack_b)
 	postmid = (mid + find_max(stack_a)) / 2;
 	if (if_sorted(stack_a) == 1)
 		exit (1);
-	//ft_printf("test\n");
 	while (i < ft_lstsize(*stack_a) - 2)
 	{
 		first_pour(stack_a, stack_b, mid, premid);
 		i++;
 	}
+	while (ft_lstsize(*stack_b) / 3 + 2 < ft_lstsize(*stack_a) && ft_lstsize(*stack_a) > 3)
+		first_pour(stack_a, stack_b, postmid, find_min(stack_b));
 	while (ft_lstsize(*stack_a) > 3)
-		first_pour(stack_a, stack_b, find_max(stack_a), postmid);
+		first_pour(stack_a, stack_b, find_max(stack_a), find_min(stack_b));
 	if (ft_lstsize(*stack_a) == 3)
 		sort_stack_a(stack_a);
 	while (*stack_b)
 		pour_back_from_stack_b(stack_a, stack_b);
 	while (if_sorted(stack_a) == 0)
 		reverse_rotate(stack_a, "rra");
-	//test(stack_a, 'a');
 }
 
 void	sort_stack_a(t_list **stack_a)
@@ -69,9 +69,7 @@ void	first_pour(t_list **stack_a, t_list **stack_b, int mid, int check)
 	int	a;
 	int	b;
 	int	c;
-	int	merge;
 
-	merge = 0;
 	a = (*stack_a)->content;
 	b = (*stack_a)->next->content;
 	c = ft_lstlast(*stack_a)->content;
@@ -83,7 +81,13 @@ void	first_pour(t_list **stack_a, t_list **stack_b, int mid, int check)
 	}
 	else if (b < a && b < c && b < mid)
 	{
-		if ((*stack_b) && (*stack_b)->content < check)
+		if (ft_lstsize(*stack_b) < ft_lstsize(*stack_a) && (a < mid))
+		{
+			if ((*stack_b) && (*stack_b)->content < check)
+				rotate(stack_b, "rb");
+			swap(stack_a, "sa");
+		}
+		else if ((*stack_b) && (*stack_b)->content < check)
 		{
 			rotate(stack_b, NULL);
 			rotate(stack_a, "rr");
@@ -120,7 +124,14 @@ void	pour_back_from_stack_b(t_list **stack_a, t_list **stack_b)
 	if (ft_lstsize(*stack_b) > 2)
 	{
 		while ((*stack_b)->next->content > (*stack_b)->content && (*stack_b)->next->content > ft_lstlast(*stack_b)->content)
+		{
+			if ((*stack_b)->content > (*stack_b)->next->next->content)
+			{
+				swap(stack_b, "sb");
+				break;
+			}
 			rotate(stack_b, "rb");
+		}
 		while (ft_lstlast(*stack_b)->content > (*stack_b)->content && ft_lstlast(*stack_b)->content > (*stack_b)->next->content)
 			reverse_rotate(stack_b, "rrb");
 	}
