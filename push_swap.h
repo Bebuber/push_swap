@@ -6,7 +6,7 @@
 /*   By: bebuber <bebuber@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 18:59:08 by bebuber           #+#    #+#             */
-/*   Updated: 2024/05/30 15:41:05 by bebuber          ###   ########.fr       */
+/*   Updated: 2024/06/02 23:16:46 by bebuber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdbool.h>
 # include <limits.h>
 # include <stdlib.h>
-//# include <stdio.h>
+# include <stdio.h>
 # include <unistd.h>
 # include <stdarg.h>
 
@@ -32,7 +32,6 @@ void		push(t_list	**source, t_list **target, char *str);
 void		rotate(t_list	**stack, char *str);
 void		reverse_rotate(t_list	**stack, char *str);
 void		check_duplicates(t_list **list);
-//void		*ft_calloc(size_t count, size_t size);
 
 //lists.c
 t_list		*ft_lstnew(int content);
@@ -50,24 +49,31 @@ int			ft_count_rows(const char *s, char c);
 
 //push_swap.c
 int			main(int argc, char **argv);
-void		free_n_exit(t_list **lst);
-t_list		*create_stack_a(int argc, char **argv);
+void		free_n_exit(t_list **lst, int n);
+t_list		*create_stack_a(int argc, char **argv, char c);
 int			ft_isdigit(const char *str);
 long int	ft_atoi(const char *str);
-void		test(t_list **list, char c);
+//void		test(t_list **list, char c);
 
 //sort_stack_a.c
 void		sort_stack(t_list **stack_a, t_list **stack_b);
 int			if_sorted(t_list **list);
-void		pour_back_from_stack_b(t_list **stack_a, t_list **stack_b);
-void		first_pour(t_list **stack_a, t_list **stack_b, int mid, int check);
-int			find_mid(t_list **list);
 void		sort_stack_a(t_list **stack_a);
-int			find_min(t_list **list);
 int			find_max(t_list **list);
-void		sort_stack_b(t_list **stack_b, int check);
+int			find_min(t_list **list);
+
+//first_pour.c
+void		first_pour(t_list **stack_a, t_list **stack_b, int mid, int check);
+void		division1(t_list **stack_a, t_list **stack_b, int mid, int check);
+void		division2(t_list **stack_a, t_list **stack_b, int mid, int check);
+void		arange_stack_b(t_list **stack_b);
+void		pour_back_from_stack_b(t_list **stack_a, t_list **stack_b);
 
 //ft_printf.c
+void		free_the_split(char **arr);
+int			ft_putstr(char *c, int *count);
+int			ft_putnbr(long long n, int *count);
+int			conversion_check(const char *c, va_list args, int *count);
 int			ft_printf(const char *c, ...);
 
 #endif

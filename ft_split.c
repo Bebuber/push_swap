@@ -6,7 +6,7 @@
 /*   By: bebuber <bebuber@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 20:17:33 by bebuber           #+#    #+#             */
-/*   Updated: 2024/05/30 18:40:55 by bebuber          ###   ########.fr       */
+/*   Updated: 2024/06/02 21:30:31 by bebuber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ t_list	*ft_split(char const *s, char c)
 		p++;
 	}
 	arr[p] = 0;
-	return (create_stack_a(numbers, arr));
+	return (create_stack_a(numbers, arr, 's'));
 }
 
 //int	main(void)

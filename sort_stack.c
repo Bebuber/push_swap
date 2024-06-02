@@ -6,7 +6,7 @@
 /*   By: bebuber <bebuber@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 09:05:48 by bebuber           #+#    #+#             */
-/*   Updated: 2024/05/30 20:17:12 by bebuber          ###   ########.fr       */
+/*   Updated: 2024/06/02 23:14:51 by bebuber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,11 @@ void	sort_stack(t_list **stack_a, t_list **stack_b)
 	mid = (find_max(stack_a) + find_min(stack_a)) / 2;
 	premid = (mid + find_min(stack_a)) / 2;
 	postmid = (mid + find_max(stack_a)) / 2;
-	
-	while (ft_lstsize(*stack_b) < ft_lstsize(*stack_a) - 2)
+	while (ft_lstsize(*stack_b) < ft_lstsize(*stack_a) - 2 \
+	&& ft_lstsize(*stack_a) > 3)
 		first_pour(stack_a, stack_b, mid, premid);
-	while (ft_lstsize(*stack_b) / 3 + 2 < ft_lstsize(*stack_a) && ft_lstsize(*stack_a) > 3)
+	while (ft_lstsize(*stack_b) / 3 + 2 < \
+	ft_lstsize(*stack_a) && ft_lstsize(*stack_a) > 3)
 		first_pour(stack_a, stack_b, postmid, find_min(stack_b));
 	while (ft_lstsize(*stack_a) > 3)
 		first_pour(stack_a, stack_b, find_max(stack_a), find_min(stack_b));
@@ -58,94 +59,6 @@ void	sort_stack_a(t_list **stack_a)
 		sort_stack_a(stack_a);
 	}
 	return ;
-}
-
-void	first_pour(t_list **stack_a, t_list **stack_b, int mid, int check)
-{
-	int	a;
-	int	b;
-	int	c;
-
-	a = (*stack_a)->content;
-	b = (*stack_a)->next->content;
-	c = ft_lstlast(*stack_a)->content;
-	if (a < b && a < c && a < mid)
-	{
-		if ((*stack_b) && (*stack_b)->content < check)
-			rotate(stack_b, "rb");
-		push(stack_a, stack_b, "pb");
-	}
-	else if (b < a && b < c && b < mid)
-	{
-		if (ft_lstsize(*stack_b) < ft_lstsize(*stack_a) && (a < mid))
-		{
-			if ((*stack_b) && (*stack_b)->content < check)
-				rotate(stack_b, "rb");
-			swap(stack_a, "sa");
-		}
-		else if ((*stack_b) && (*stack_b)->content < check)
-		{
-			rotate(stack_b, NULL);
-			rotate(stack_a, "rr");
-		}
-		else
-			rotate(stack_a, "ra");
-		push(stack_a, stack_b, "pb");
-	}
-	else if (c < a && c < b && c < mid)
-	{
-		if ((*stack_b) && (*stack_b)->content < check)
-			rotate(stack_b, "rb");
-		reverse_rotate(stack_a, "rra");
-		push(stack_a, stack_b, "pb");
-	}
-	else
-	{
-		if ((*stack_b) && (*stack_b)->content < check)
-		{
-			rotate(stack_b, NULL );
-			rotate(stack_a, "rr");
-		}
-		else
-			rotate(stack_a, "ra");
-		first_pour(stack_a, stack_b, mid, check);
-	}
-	return ;
-}
-
-void	pour_back_from_stack_b(t_list **stack_a, t_list **stack_b)
-{
-	int	a;
-
-	if (ft_lstsize(*stack_b) > 2)
-	{
-		while ((*stack_b)->next->content > (*stack_b)->content && (*stack_b)->next->content > ft_lstlast(*stack_b)->content)
-		{
-			if ((*stack_b)->content > (*stack_b)->next->next->content)
-			{
-				swap(stack_b, "sb");
-				break;
-			}
-			rotate(stack_b, "rb");
-		}
-		while (ft_lstlast(*stack_b)->content > (*stack_b)->content && ft_lstlast(*stack_b)->content > (*stack_b)->next->content)
-			reverse_rotate(stack_b, "rrb");
-	}
-	a = (*stack_b)->content;
-	if (a < (*stack_a)->content && (*stack_a)->content < ft_lstlast(*stack_a)->content)
-		push(stack_b, stack_a, "pa");
-	else if (a < (*stack_a)->content && (*stack_a)->content > ft_lstlast(*stack_a)->content)
-	{
-		while ((*stack_a)->content > ft_lstlast(*stack_a)->content && ft_lstlast(*stack_a)->content > a)
-			reverse_rotate(stack_a, "rra");
-		push(stack_b, stack_a, "pa");
-	}
-	else if (a > (*stack_a)->content)
-	{
-		while (a > (*stack_a)->content)
-			rotate(stack_a, "ra");
-		push(stack_b, stack_a, "pa");
-	}
 }
 
 int	if_sorted(t_list **list)

@@ -6,7 +6,7 @@
 /*   By: bebuber <bebuber@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:26:33 by bebuber           #+#    #+#             */
-/*   Updated: 2024/05/25 20:03:29 by bebuber          ###   ########.fr       */
+/*   Updated: 2024/06/02 20:37:54 by bebuber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	check_duplicates(t_list **list)
 		while (copy)
 		{
 			if (node->content == copy->content)
-				free_n_exit(&(*list));
+				free_n_exit(&(*list), 1);
 			copy = copy->next;
 		}
 		node = node->next;

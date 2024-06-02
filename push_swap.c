@@ -6,7 +6,7 @@
 /*   By: bebuber <bebuber@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 14:05:33 by bebuber           #+#    #+#             */
-/*   Updated: 2024/05/30 19:59:40 by bebuber          ###   ########.fr       */
+/*   Updated: 2024/06/02 23:17:00 by bebuber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,16 @@ int	main(int argc, char **argv)
 	else if (argc == 2)
 	{
 		if (!argv[1][0])
-			free_n_exit(&stack_a);
+			exit (1);
 		stack_a = ft_split(argv[1], ' ');
 	}
 	else
-		stack_a = create_stack_a((--argc), (++argv));
+		stack_a = create_stack_a((--argc), (++argv), 'a');
 	if (stack_a == NULL)
-		free_n_exit(&stack_a);
+		free_n_exit(&stack_a, 1);
 	check_duplicates(&stack_a);
 	if (if_sorted(&stack_a) == 1)
-		exit (1);
+		free_n_exit(&stack_a, 0);
 	sort_stack(&stack_a, &stack_b);
 	return (0);
 }
@@ -85,11 +85,12 @@ long int	ft_atoi(const char *str)
 	return (numb * ngt);
 }
 
-void	free_n_exit(t_list **lst)
+void	free_n_exit(t_list **lst, int n)
 {
 	t_list	*temp;
 
-	write(2, "Error\n", 6);
+	if (n == 1)
+		write(2, "Error\n", 6);
 	while (*lst)
 	{
 		temp = (*lst)->next;
@@ -100,7 +101,7 @@ void	free_n_exit(t_list **lst)
 	exit (1);
 }
 
-t_list	*create_stack_a(int argc, char **argv)
+t_list	*create_stack_a(int argc, char **argv, char c)
 {
 	t_list		*list;
 	t_list		*new_node;
@@ -113,14 +114,18 @@ t_list	*create_stack_a(int argc, char **argv)
 	while (i < argc)
 	{
 		if (ft_isdigit(argv[i]) == -1)
-			free_n_exit(&list);
+			free_n_exit(&list, 1);
 		number = ft_atoi(argv[i]);
 		if (number > INT_MAX || number < INT_MIN)
-			free_n_exit(&list);
+			free_n_exit(&list, 1);
 		new_node = ft_lstnew(number);
 		ft_lstadd_back(&list, new_node);
 		i++;
 	}
+	if (c == 's')
+		free_the_split(argv);
+	if (argc == 1)
+		free_n_exit(&list, 0);
 	return (list);
 }
 
@@ -136,6 +141,6 @@ t_list	*create_stack_a(int argc, char **argv)
 //		ft_printf("        %d\n", copy->content);
 //		copy = tmp->next;
 //	}
-//	ft_printf("    |---------|    \n    /
-//| stack_%c |     \n    |_________|    \n\n", c);
+//	ft_printf("    |---------|    \n    | 
+//stack_%c |     \n    |_________|    \n\n", c);
 //}
