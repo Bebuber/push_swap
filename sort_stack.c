@@ -6,7 +6,7 @@
 /*   By: bebuber <bebuber@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 09:05:48 by bebuber           #+#    #+#             */
-/*   Updated: 2024/06/02 23:14:51 by bebuber          ###   ########.fr       */
+/*   Updated: 2024/06/02 23:24:36 by bebuber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@ void	sort_stack(t_list **stack_a, t_list **stack_b)
 	int	mid;
 	int	premid;
 	int	postmid;
-	int	i;
 
-	i = 1;
 	mid = (find_max(stack_a) + find_min(stack_a)) / 2;
 	premid = (mid + find_min(stack_a)) / 2;
 	postmid = (mid + find_max(stack_a)) / 2;

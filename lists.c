@@ -6,7 +6,7 @@
 /*   By: bebuber <bebuber@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 12:28:39 by bebuber           #+#    #+#             */
-/*   Updated: 2024/05/25 20:02:56 by bebuber          ###   ########.fr       */
+/*   Updated: 2024/06/02 23:31:56 by bebuber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_list	*ft_lstnew(int content)
 	t_list	*new;
 
 	new = (t_list *)malloc(sizeof(t_list));
-	if (!new)
+	if (new == NULL)
 		return (NULL);
 	new->content = content;
 	new->next = NULL;

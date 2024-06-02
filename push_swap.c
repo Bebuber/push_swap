@@ -6,7 +6,7 @@
 /*   By: bebuber <bebuber@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 14:05:33 by bebuber           #+#    #+#             */
-/*   Updated: 2024/06/02 23:17:00 by bebuber          ###   ########.fr       */
+/*   Updated: 2024/06/02 23:35:19 by bebuber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(int argc, char **argv)
 	stack_a = NULL;
 	stack_b = NULL;
 	if (argc < 2)
-		ft_printf("%s\n", argv[0]);
+		return (0);
 	else if (argc == 2)
 	{
 		if (!argv[1][0])
@@ -35,6 +35,7 @@ int	main(int argc, char **argv)
 	if (if_sorted(&stack_a) == 1)
 		free_n_exit(&stack_a, 0);
 	sort_stack(&stack_a, &stack_b);
+	free_n_exit(&stack_a, 0);
 	return (0);
 }
 
