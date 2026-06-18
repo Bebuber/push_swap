@@ -129,19 +129,3 @@ t_list	*create_stack_a(int argc, char **argv, char c)
 		free_n_exit(&list, 0);
 	return (list);
 }
-
-//void	test(t_list **list, char c)
-//{
-//	t_list	*tmp;
-//	t_list	*copy;
-
-//	copy = (*list);
-//	while (copy)
-//	{
-//		tmp = copy;
-//		ft_printf("        %d\n", copy->content);
-//		copy = tmp->next;
-//	}
-//	ft_printf("    |---------|    \n    | 
-//stack_%c |     \n    |_________|    \n\n", c);
-//}
