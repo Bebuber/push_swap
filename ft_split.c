@@ -123,27 +123,3 @@ t_list	*ft_split(char const *s, char c)
 	arr[p] = 0;
 	return (create_stack_a(numbers, arr, 's'));
 }
-
-//int	main(void)
-//{
-//	char	**arr;
-//	int		n;
-//	int		i;
-//	char	const *s = "hello!zzzzzzzz";
-//	char	c = 'z';
-
-//	n = 0;
-//	i = 0;
-//	arr = ft_split(s, c);
-//	while (arr[n])
-//	{
-//		while (arr[n][i])
-//		{
-//			printf ("arr[%d] [%d] = %c \n",n,i, arr[n][i]);
-//			i++;
-//		}
-//		n++;
-//		i = 0;
-//	}
-//	return (0);
-//}
